@@ -14,3 +14,7 @@ let noDataDesc : String = "No weather data available. Do you want to add some sa
 
 let deleteTitle : String = "Delete Record"
 let deleteDesc : String = "Deleting will permanently remove the weather data from your database. Do you really want to delete this weather data?"
+
+
+let cityNameTitle: String = "City Name Invalid"
+let cityNameDesc : String = "City name must have atleast 3 characters and should not have any numbers "

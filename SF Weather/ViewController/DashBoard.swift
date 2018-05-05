@@ -104,6 +104,9 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBAction func buttonOrderList(_ sender: Any) {
+        if weatherData.count == 0 {
+            showAlert(Title: noDataTitle, Desc: noDataDesc)
+        }
         switch NextOrderId {
         case 0:
             weatherData =  weatherData.sorted(by: { $0.minTemperature < $1.minTemperature })
@@ -128,14 +131,16 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
             buttonOrderBy.setTitle("Temperature", for: .normal)
             break
         }
-        
-        
            self.WeatherTable.reloadData()
     }
     
+    @IBAction func AddMoreData(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "MainNavigation") as! UINavigationController
+        navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "AddNewData")], animated: false)
+        self.present(navigationController, animated:true, completion: nil)
+    }
     
-    
-    // Order Data Methods
     
     
     //Core Data Methods
