@@ -14,9 +14,6 @@
         <array key="sourcesanspro-black.ttf">
             <string>SourceSansPro-Black</string>
         </array>
-        <array key="sourcesanspro-bold.ttf">
-            <string>SourceSansPro-Bold</string>
-        </array>
         <array key="sourcesanspro-regular.ttf">
             <string>SourceSansPro-Regular</string>
         </array>
@@ -48,7 +45,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="8ws-6Q-6f1"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="10"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -70,7 +67,7 @@
                             <constraint firstAttribute="width" constant="43" id="GsD-Sn-nev"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.15537545084953308" green="0.34711384773254395" blue="0.46368610858917236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -99,6 +96,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="CityCondition" destination="9sQ-Zs-Ete" id="R1v-u7-K15"/>
                 <outlet property="CityHumidity" destination="KvJ-1z-HNI" id="yjc-Ic-5L7"/>
                 <outlet property="CityImage" destination="cej-AN-hri" id="COS-DW-EvO"/>
                 <outlet property="CityMinMaxTemp" destination="Uke-WQ-gV3" id="lem-zR-IiY"/>

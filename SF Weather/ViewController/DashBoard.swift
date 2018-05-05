@@ -12,9 +12,11 @@ import CoreData
 class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var WeatherTable: UITableView!
+    @IBOutlet weak var buttonOrderBy: UIButton!
     
     var weatherData = [WeatherModel]()
     var CurrentIndexToDelete: Int = 1000
+    var NextOrderId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,12 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //Check for Records in db
         CommanFunction().countNumberOfRecords() == 0 ? showAlert(Title: noDataTitle, Desc: noDataDesc) : retrieveWatherData()
         
+        // button style
+        buttonOrderBy.layer.masksToBounds = true
+        buttonOrderBy.layer.cornerRadius = 5
+        buttonOrderBy.layer.borderWidth = 1
+        buttonOrderBy.layer.borderColor = UIColor.white.cgColor
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +47,8 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.CityName.text = weatherData[indexPath.row].cityName
         cell.CityHumidity.text = String (weatherData[indexPath.row].humidity)
         cell.CityImage.image = UIImage(named: CommanFunction().weatherImage(ImageName: weatherData[indexPath.row].condition))
-        cell.CityMinMaxTemp.text = "Temperature \(String (weatherData[indexPath.row].minTemperature)) ℃ - \(String (weatherData[indexPath.row].maxTemperature)) ℃"
+        cell.CityMinMaxTemp.text = "Temperature : \(String (weatherData[indexPath.row].minTemperature)) ℃  -  \(String (weatherData[indexPath.row].maxTemperature)) ℃"
+        cell.CityCondition.text = weatherData[indexPath.row].condition
         cell.selectionStyle = .none
         return cell
     }
@@ -95,10 +104,33 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBAction func buttonOrderList(_ sender: Any) {
-            DispatchQueue.main.async {
-                self.retrieveWatherData()
-                //self.deleteData(deleteID: 1)
-            }
+        switch NextOrderId {
+        case 0:
+            weatherData =  weatherData.sorted(by: { $0.minTemperature < $1.minTemperature })
+            buttonOrderBy.setTitle("Temperature", for: .normal)
+            NextOrderId = 1
+            buttonOrderBy.setTitle("Min Temperature", for: .normal)
+        case 1:
+            weatherData =  weatherData.sorted(by: { $0.maxTemperature < $1.maxTemperature })
+            NextOrderId = 2
+            buttonOrderBy.setTitle("Max Temperature", for: .normal)
+        case 2:
+            weatherData =  weatherData.sorted(by: { $0.cityName < $1.cityName })
+            NextOrderId = 3
+            buttonOrderBy.setTitle("City Name", for: .normal)
+        case 3:
+            weatherData =  weatherData.sorted(by: { $0.humidity < $1.humidity })
+            NextOrderId = 0
+            buttonOrderBy.setTitle("Humidity", for: .normal)
+        default:
+            NextOrderId = 0
+            weatherData =  weatherData.sorted(by: { $0.minTemperature < $1.minTemperature })
+            buttonOrderBy.setTitle("Temperature", for: .normal)
+            break
+        }
+        
+        
+           self.WeatherTable.reloadData()
     }
     
     

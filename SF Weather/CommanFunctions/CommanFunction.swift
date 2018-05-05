@@ -38,9 +38,9 @@ class CommanFunction: NSObject {
         var WeatherData = [WeatherModel]()
         WeatherData.append(WeatherModel(id: 1, cityName: "Kilinochchi, Sri Lanka", condition: "cloudy", humidity: 22.3, maxTemperature: 38.6, minTemperature: 13.60))
         WeatherData.append(WeatherModel(id: 2, cityName: "Sydney, NSW", condition: "rain", humidity: 25.3, maxTemperature: 40.6, minTemperature: 8.20))
-        WeatherData.append(WeatherModel(id: 3, cityName: "Kuala Lumpur, Malaysia", condition: "snow", humidity: 68.3, maxTemperature: 25, minTemperature: 115))
+        WeatherData.append(WeatherModel(id: 3, cityName: "Kuala Lumpur, Malaysia", condition: "snow", humidity: 68.3, maxTemperature: 25, minTemperature: 15))
         WeatherData.append(WeatherModel(id: 4, cityName: "Manchester, UK", condition: "sunny", humidity: 80, maxTemperature: 38.6, minTemperature: 26.60))
-        WeatherData.append(WeatherModel(id: 5, cityName: "Colombo, Sri Lanka", condition: "thunderstorms", humidity: 22.3, maxTemperature: 38.6, minTemperature: 20.60))
+        WeatherData.append(WeatherModel(id: 5, cityName: "Colombo, Sri Lanka", condition: "thunderstorms", humidity: 10.3, maxTemperature: 38.6, minTemperature: 20.60))
         
         for item in WeatherData {
             DispatchQueue.main.async {

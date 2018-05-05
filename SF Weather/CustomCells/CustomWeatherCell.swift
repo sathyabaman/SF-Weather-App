@@ -14,6 +14,7 @@ class CustomWeatherCell: UITableViewCell {
     @IBOutlet weak var CityName: UILabel!
     @IBOutlet weak var CityMinMaxTemp: UILabel!
     @IBOutlet weak var CityHumidity: UILabel!
+    @IBOutlet weak var CityCondition: UILabel!
     
     
     override func awakeFromNib() {
