@@ -19,11 +19,7 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -37,26 +33,29 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     @IBAction func buttonOrderList(_ sender: Any) {
-      //  saveItem()
-        
-        retrieveWatherData()
+       
+            DispatchQueue.main.async {
+               // self.saveItem()
+               // self.retrieveWatherData()
+                self.deleteData(deleteID: 1)
+                self.retrieveWatherData()
+            }
     }
     
+    
+    //Core Data Methods
     func saveItem(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        //**Note:** Here we are providing the entityName **`Entity`** that we have added in the model
-        let entity = NSEntityDescription.entity(forEntityName: "WeatherList",  in: context)
 
-       
+        let entity = NSEntityDescription.entity(forEntityName: "WeatherList",  in: context)
                 let newWeather = NSManagedObject(entity: entity!, insertInto: context)
-                newWeather.setValue(1, forKey: "id")
+                newWeather.setValue(3, forKey: "id")
                 newWeather.setValue("Kilinochchi", forKey: "cityName")
                 newWeather.setValue("SUNNY", forKey: "condition")
                 newWeather.setValue(23.2, forKey: "humidity")
                 newWeather.setValue(60, forKey: "maxTemperature")
                 newWeather.setValue(10, forKey: "minTemperature")
-        
+
                 do {
                     try context.save()
                 } catch{
@@ -73,12 +72,33 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let obtainedResults = results as! [NSManagedObject]
             for i in 0 ..< obtainedResults.count{
                 let firstResult = obtainedResults[i]
-                let myValue = firstResult.value(forKey: "humidity")
-                print("Humidity: \(myValue)")
+                let myHumi = firstResult.value(forKey: "humidity")
+                let myId = firstResult.value(forKey: "id")
+                print("ID: \(String(describing: myId))  --> Humidity: \(String(describing: myHumi))")
             }
         } catch {
             print("Error")
         }
+    }
+    
+    func deleteData(deleteID: Int){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<WeatherList>(entityName: "WeatherList")
+        let predicate = NSPredicate(format: "id == \(deleteID)")
+        fetchRequest.predicate = predicate
+        let result = try? context.fetch(fetchRequest)
+        let resultData = result as! [WeatherList]
+        
+            for object in resultData {
+                context.delete(object)
+            }
+        
+            do {
+                try context.save()
+                print("saved!")
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
     }
 
 }

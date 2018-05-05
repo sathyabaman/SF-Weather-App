@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+
+
+struct WeatherModel {
+    var id : Int = 0
+    var cityName: String = ""
+    var condition: String = ""
+    var humidity: Float = 0.0
+    var maxTemperature: Float = 0.0
+    var minTemperature: Float = 0.0
+}
