@@ -13,9 +13,11 @@
 		A04D937B209D4CCC00677087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04D937A209D4CCC00677087 /* Assets.xcassets */; };
 		A04D937E209D4CCC00677087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04D937C209D4CCC00677087 /* LaunchScreen.storyboard */; };
 		A04D9389209D4CCC00677087 /* SF_WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9388209D4CCC00677087 /* SF_WeatherTests.swift */; };
-		A04D9394209D519200677087 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A04D9393209D519200677087 /* Fonts */; };
 		A04D9396209D549500677087 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9395209D549500677087 /* DashBoard.swift */; };
 		A04D9398209D550500677087 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9397209D550500677087 /* MainNavigation.swift */; };
+		A04D939B209D5B1700677087 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A04D9393209D519200677087 /* Fonts */; };
+		A04D939F209D5C7C00677087 /* CustomWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D939D209D5C7C00677087 /* CustomWeatherCell.swift */; };
+		A04D93A0209D5C7C00677087 /* CustomWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04D939E209D5C7C00677087 /* CustomWeatherCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		A04D9393209D519200677087 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		A04D9395209D549500677087 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
 		A04D9397209D550500677087 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
+		A04D939D209D5C7C00677087 /* CustomWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeatherCell.swift; sourceTree = "<group>"; };
+		A04D939E209D5C7C00677087 /* CustomWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomWeatherCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +87,9 @@
 		A04D936F209D4CCB00677087 /* SF Weather */ = {
 			isa = PBXGroup;
 			children = (
-				A04D939A209D56B800677087 /* ViewController */,
+				A04D939C209D5C2D00677087 /* CustomCells */,
 				A04D9399209D559D00677087 /* NavigationControllers */,
+				A04D939A209D56B800677087 /* ViewController */,
 				A04D9370209D4CCB00677087 /* AppDelegate.swift */,
 				A04D9374209D4CCB00677087 /* Main.storyboard */,
 				A04D937A209D4CCC00677087 /* Assets.xcassets */,
@@ -119,6 +124,15 @@
 				A04D9395209D549500677087 /* DashBoard.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A04D939C209D5C2D00677087 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				A04D939D209D5C7C00677087 /* CustomWeatherCell.swift */,
+				A04D939E209D5C7C00677087 /* CustomWeatherCell.xib */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A04D937E209D4CCC00677087 /* LaunchScreen.storyboard in Resources */,
+				A04D93A0209D5C7C00677087 /* CustomWeatherCell.xib in Resources */,
 				A04D937B209D4CCC00677087 /* Assets.xcassets in Resources */,
 				A04D9376209D4CCB00677087 /* Main.storyboard in Resources */,
-				A04D9394209D519200677087 /* Fonts in Resources */,
+				A04D939B209D5B1700677087 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +241,7 @@
 				A04D9398209D550500677087 /* MainNavigation.swift in Sources */,
 				A04D9396209D549500677087 /* DashBoard.swift in Sources */,
 				A04D9379209D4CCB00677087 /* SF_Weather.xcdatamodeld in Sources */,
+				A04D939F209D5C7C00677087 /* CustomWeatherCell.swift in Sources */,
 				A04D9371209D4CCB00677087 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,9 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="sourcesanspro-regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main Navigation-->
         <scene sceneID="CNH-py-w9B">
@@ -36,14 +42,63 @@
                     <view key="view" contentMode="scaleToFill" id="elt-qK-bO3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3t-Tb-hpN">
+                                <rect key="frame" x="175" y="75" width="184" height="32"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
+                                <state key="normal" title="Temperature">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W7D-ci-WFR">
+                                <rect key="frame" x="0.0" y="115" width="375" height="552"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6ft-8a-4IN" id="HG4-FG-bdH"/>
+                                    <outlet property="delegate" destination="6ft-8a-4IN" id="VZJ-5s-dLS"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vi-0V-OoV">
+                                <rect key="frame" x="28" y="79" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="7b1-3k-aWa"/>
+                                    <constraint firstAttribute="height" constant="21" id="M3E-RK-lOT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.25652408599853516" green="0.41419109702110291" blue="0.51424229145050049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2Vi-0V-OoV" firstAttribute="top" secondItem="CC6-Mg-xFS" secondAttribute="top" constant="15" id="MH3-Zd-mrI"/>
+                            <constraint firstItem="Q3t-Tb-hpN" firstAttribute="top" secondItem="CC6-Mg-xFS" secondAttribute="top" constant="11" id="Xih-In-2AE"/>
+                            <constraint firstItem="W7D-ci-WFR" firstAttribute="top" secondItem="Q3t-Tb-hpN" secondAttribute="bottom" constant="8" symbolic="YES" id="bd1-De-Ra0"/>
+                            <constraint firstItem="W7D-ci-WFR" firstAttribute="bottom" secondItem="CC6-Mg-xFS" secondAttribute="bottom" id="e1Y-7z-16N"/>
+                            <constraint firstItem="2Vi-0V-OoV" firstAttribute="centerY" secondItem="Q3t-Tb-hpN" secondAttribute="centerY" constant="-1.5" id="f8p-w9-027"/>
+                            <constraint firstItem="Q3t-Tb-hpN" firstAttribute="leading" secondItem="2Vi-0V-OoV" secondAttribute="trailing" constant="24" id="kuG-yV-X2I"/>
+                            <constraint firstAttribute="trailing" secondItem="W7D-ci-WFR" secondAttribute="trailing" id="pdH-Ky-gwJ"/>
+                            <constraint firstItem="2Vi-0V-OoV" firstAttribute="leading" secondItem="elt-qK-bO3" secondAttribute="leadingMargin" constant="12" id="sNV-lZ-zn0"/>
+                            <constraint firstItem="Q3t-Tb-hpN" firstAttribute="trailing" secondItem="elt-qK-bO3" secondAttribute="trailingMargin" id="tMK-Ij-eNQ"/>
+                            <constraint firstItem="W7D-ci-WFR" firstAttribute="leading" secondItem="elt-qK-bO3" secondAttribute="leading" id="te6-Cg-IBc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CC6-Mg-xFS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="B3C-qf-vaB"/>
+                    <navigationItem key="navigationItem" id="B3C-qf-vaB">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="buttonDarkAdd" id="QrL-Ec-J4e">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="WeatherTable" destination="W7D-ci-WFR" id="KfI-VT-BOB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIV-sL-sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="115"/>
+            <point key="canvasLocation" x="276" y="114.69265367316342"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buttonDarkAdd" width="22" height="22"/>
+    </resources>
 </document>

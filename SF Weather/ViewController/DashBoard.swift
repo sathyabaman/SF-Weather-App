@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DashBoard: UIViewController {
+class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var WeatherTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "Weather List"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +23,16 @@ class DashBoard: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = Bundle.main.loadNibNamed("CustomWeatherCell", owner: self, options: nil)?.first as! CustomWeatherCell
+        cell.selectionStyle = .none
+        return cell
+    }
+
 
 }
