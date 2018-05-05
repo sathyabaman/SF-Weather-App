@@ -21,6 +21,7 @@
 		A04D93A6209D686B00677087 /* WeatherData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A04D93A4209D686B00677087 /* WeatherData.xcdatamodeld */; };
 		A04D93A9209D721400677087 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93A8209D721400677087 /* DataModel.swift */; };
 		A04D93AC209D739900677087 /* CommanFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93AB209D739900677087 /* CommanFunction.swift */; };
+		A04D93AE209D860800677087 /* CommanVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93AD209D860800677087 /* CommanVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		A04D93A5209D686B00677087 /* WeatherData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherData.xcdatamodel; sourceTree = "<group>"; };
 		A04D93A8209D721400677087 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A04D93AB209D739900677087 /* CommanFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanFunction.swift; sourceTree = "<group>"; };
+		A04D93AD209D860800677087 /* CommanVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				A04D93A8209D721400677087 /* DataModel.swift */,
+				A04D93AD209D860800677087 /* CommanVariables.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				A04D93A9209D721400677087 /* DataModel.swift in Sources */,
 				A04D93A6209D686B00677087 /* WeatherData.xcdatamodeld in Sources */,
 				A04D9398209D550500677087 /* MainNavigation.swift in Sources */,
+				A04D93AE209D860800677087 /* CommanVariables.swift in Sources */,
 				A04D9396209D549500677087 /* DashBoard.swift in Sources */,
 				A04D939F209D5C7C00677087 /* CustomWeatherCell.swift in Sources */,
 				A04D9371209D4CCB00677087 /* AppDelegate.swift in Sources */,

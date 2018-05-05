@@ -13,56 +13,100 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var WeatherTable: UITableView!
     
+    var weatherData = [WeatherModel]()
+    var CurrentIndexToDelete: Int = 1000
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather List"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        //Broadcast Receiver
+        NotificationCenter.default.addObserver(self, selector: #selector(dataAdded(_:)), name: NSNotification.Name(rawValue: "SampleData"), object: nil)
+        
+        
+        //Check for Records in db
+        CommanFunction().countNumberOfRecords() == 0 ? showAlert(Title: noDataTitle, Desc: noDataDesc) : retrieveWatherData()
+        
     }
 
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return weatherData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CustomWeatherCell", owner: self, options: nil)?.first as! CustomWeatherCell
+        cell.CityName.text = weatherData[indexPath.row].cityName
+        cell.CityHumidity.text = String (weatherData[indexPath.row].humidity)
+        cell.CityImage.image = UIImage(named: CommanFunction().weatherImage(ImageName: weatherData[indexPath.row].condition))
+        cell.CityMinMaxTemp.text = "Temperature \(String (weatherData[indexPath.row].minTemperature)) ℃ - \(String (weatherData[indexPath.row].maxTemperature)) ℃"
         cell.selectionStyle = .none
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            CurrentIndexToDelete = indexPath.row
+            showAlert(Title: deleteTitle, Desc: deleteDesc)
+        }
+    }
 
     
+    //Alert
+    func showAlert(Title: String, Desc: String) -> Void {
+        let refreshAlert = UIAlertController(title: Title, message: Desc, preferredStyle: UIAlertControllerStyle.alert)
+        refreshAlert.addAction(UIAlertAction(title: "Yes, Please!", style: .default, handler: { (action: UIAlertAction!) in
+            switch Title {
+                case "No Weather Data" :
+                    CommanFunction().addSampleData()
+                    break
+                case "Delete Record":
+                    DispatchQueue.main.async {
+                        self.deleteData(deleteID: self.weatherData[self.CurrentIndexToDelete].id)
+                        self.weatherData.remove(at: self.CurrentIndexToDelete)
+                        self.WeatherTable.reloadData()
+                    }
+                    break
+                default :
+                    break
+            }
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        }))
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    @objc func dataAdded(_ notification: NSNotification) {
+        if let topic = notification.userInfo?["Topic"] as? String {
+            print(topic)
+        }
+        if let message = notification.userInfo?["message"] as? String {
+            print(message)
+            
+            self.retrieveWatherData()
+            self.WeatherTable.reloadData()
+        }
+    }
+    
+    
     @IBAction func buttonOrderList(_ sender: Any) {
-       
             DispatchQueue.main.async {
-               // self.saveItem()
-               // self.retrieveWatherData()
-                self.deleteData(deleteID: 1)
                 self.retrieveWatherData()
+                //self.deleteData(deleteID: 1)
             }
     }
     
     
-    //Core Data Methods
-    func saveItem(){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        let entity = NSEntityDescription.entity(forEntityName: "WeatherList",  in: context)
-                let newWeather = NSManagedObject(entity: entity!, insertInto: context)
-                newWeather.setValue(3, forKey: "id")
-                newWeather.setValue("Kilinochchi", forKey: "cityName")
-                newWeather.setValue("SUNNY", forKey: "condition")
-                newWeather.setValue(23.2, forKey: "humidity")
-                newWeather.setValue(60, forKey: "maxTemperature")
-                newWeather.setValue(10, forKey: "minTemperature")
-
-                do {
-                    try context.save()
-                } catch{
-                    print("There was an error in saving data")
-                }
-    }
     
+    // Order Data Methods
+    
+    
+    //Core Data Methods
     func retrieveWatherData(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WeatherList")
@@ -72,9 +116,13 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let obtainedResults = results as! [NSManagedObject]
             for i in 0 ..< obtainedResults.count{
                 let firstResult = obtainedResults[i]
-                let myHumi = firstResult.value(forKey: "humidity")
-                let myId = firstResult.value(forKey: "id")
-                print("ID: \(String(describing: myId))  --> Humidity: \(String(describing: myHumi))")
+                
+                weatherData.append(WeatherModel(id: firstResult.value(forKey: "id") as! Int,
+                                                cityName: firstResult.value(forKey: "cityName") as! String,
+                                                condition: firstResult.value(forKey: "condition") as! String,
+                                                humidity: firstResult.value(forKey: "humidity") as! Float,
+                                                maxTemperature: firstResult.value(forKey: "maxTemperature") as! Float,
+                                                minTemperature: firstResult.value(forKey: "minTemperature") as! Float))
             }
         } catch {
             print("Error")
