@@ -49,6 +49,9 @@
                                 <state key="normal" title="Temperature">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonOrderList:" destination="6ft-8a-4IN" eventType="touchUpInside" id="7uB-K8-w1u"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W7D-ci-WFR">
                                 <rect key="frame" x="0.0" y="115" width="375" height="552"/>
