@@ -28,7 +28,7 @@
                         <color key="barTintColor" red="0.15537545084953308" green="0.34711384773254395" blue="0.46368610858917236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="nmO-Wg-G7I" kind="relationship" relationship="rootViewController" id="d8p-iw-0v9"/>
+                        <segue destination="nmO-Wg-G7I" kind="relationship" relationship="rootViewController" id="F1p-7M-Osp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbF-2a-Tbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,13 +143,13 @@
                                 <rect key="frame" x="16" y="182" width="103" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20.3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXG-rK-UoJ">
                                 <rect key="frame" x="237" y="182" width="122" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozf-rk-PSC">
                                 <rect key="frame" x="16" y="227" width="343" height="21"/>
@@ -173,7 +173,7 @@
                                 <rect key="frame" x="16" y="333" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -229,7 +229,7 @@
                         <outlet property="humidity" destination="FJm-yp-Kpz" id="4MU-DL-qP7"/>
                         <outlet property="maxTemp" destination="KXG-rK-UoJ" id="2DT-pr-dGr"/>
                         <outlet property="minTemp" destination="aTC-ha-yiU" id="CdT-3W-EpM"/>
-                        <outlet property="weatherCondition" destination="GVe-QU-68b" id="bCZ-lN-Vgr"/>
+                        <outlet property="weatherCondition" destination="GVe-QU-68b" id="9XO-kg-zpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sS5-Hd-GeG" userLabel="First Responder" sceneMemberID="firstResponder"/>

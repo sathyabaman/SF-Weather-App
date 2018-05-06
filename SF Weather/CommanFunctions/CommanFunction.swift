@@ -103,6 +103,10 @@ extension String  {
     var isNumber: Bool {
         return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
+    
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
 }
 
 extension Double {
