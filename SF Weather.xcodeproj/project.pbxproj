@@ -11,7 +11,6 @@
 		A04D9376209D4CCB00677087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04D9374209D4CCB00677087 /* Main.storyboard */; };
 		A04D937B209D4CCC00677087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04D937A209D4CCC00677087 /* Assets.xcassets */; };
 		A04D937E209D4CCC00677087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04D937C209D4CCC00677087 /* LaunchScreen.storyboard */; };
-		A04D9389209D4CCC00677087 /* SF_WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9388209D4CCC00677087 /* SF_WeatherTests.swift */; };
 		A04D9396209D549500677087 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9395209D549500677087 /* DashBoard.swift */; };
 		A04D9398209D550500677087 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D9397209D550500677087 /* MainNavigation.swift */; };
 		A04D939B209D5B1700677087 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = A04D9393209D519200677087 /* Fonts */; };
@@ -23,6 +22,8 @@
 		A04D93AC209D739900677087 /* CommanFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93AB209D739900677087 /* CommanFunction.swift */; };
 		A04D93AE209D860800677087 /* CommanVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93AD209D860800677087 /* CommanVariables.swift */; };
 		A04D93B0209DA2CD00677087 /* AddNewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04D93AF209DA2CD00677087 /* AddNewData.swift */; };
+		A068852E209EDE7C00F30A4D /* CommanFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068852D209EDE7C00F30A4D /* CommanFunctionTests.swift */; };
+		A0688530209EE70000F30A4D /* WeatherModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068852F209EE70000F30A4D /* WeatherModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,6 @@
 		A04D937D209D4CCC00677087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A04D937F209D4CCC00677087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A04D9384209D4CCC00677087 /* SF WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SF WeatherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A04D9388209D4CCC00677087 /* SF_WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_WeatherTests.swift; sourceTree = "<group>"; };
 		A04D938A209D4CCD00677087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A04D9393209D519200677087 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		A04D9395209D549500677087 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
@@ -56,6 +56,8 @@
 		A04D93AB209D739900677087 /* CommanFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanFunction.swift; sourceTree = "<group>"; };
 		A04D93AD209D860800677087 /* CommanVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanVariables.swift; sourceTree = "<group>"; };
 		A04D93AF209DA2CD00677087 /* AddNewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewData.swift; sourceTree = "<group>"; };
+		A068852D209EDE7C00F30A4D /* CommanFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanFunctionTests.swift; sourceTree = "<group>"; };
+		A068852F209EE70000F30A4D /* WeatherModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +120,9 @@
 		A04D9387209D4CCC00677087 /* SF WeatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				A04D9388209D4CCC00677087 /* SF_WeatherTests.swift */,
 				A04D938A209D4CCD00677087 /* Info.plist */,
+				A068852D209EDE7C00F30A4D /* CommanFunctionTests.swift */,
+				A068852F209EE70000F30A4D /* WeatherModelTest.swift */,
 			);
 			path = "SF WeatherTests";
 			sourceTree = "<group>";
@@ -294,7 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04D9389209D4CCC00677087 /* SF_WeatherTests.swift in Sources */,
+				A0688530209EE70000F30A4D /* WeatherModelTest.swift in Sources */,
+				A068852E209EDE7C00F30A4D /* CommanFunctionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

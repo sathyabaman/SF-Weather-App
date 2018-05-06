@@ -17,4 +17,5 @@ struct WeatherModel {
     var humidity: Float = 0.0
     var maxTemperature: Float = 0.0
     var minTemperature: Float = 0.0
+   
 }

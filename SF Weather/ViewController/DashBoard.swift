@@ -170,7 +170,7 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
         buttonOrderBy.layer.masksToBounds = true
         buttonOrderBy.layer.cornerRadius = 5
         buttonOrderBy.layer.borderWidth = 1
-        buttonOrderBy.layer.borderColor = UIColor.white.cgColor 
+        buttonOrderBy.layer.borderColor = UIColor.white.cgColor
     }
 
     
