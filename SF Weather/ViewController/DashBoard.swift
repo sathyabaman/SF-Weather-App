@@ -18,6 +18,8 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var CurrentIndexToDelete: Int = 1000
     var NextOrderId: Int = 0
     
+    var refresher:UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather List"
@@ -31,10 +33,10 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
         CommanFunction().countNumberOfRecords() == 0 ? showAlert(Title: noDataTitle, Desc: noDataDesc) : retrieveWatherData()
         
         // button style
-        buttonOrderBy.layer.masksToBounds = true
-        buttonOrderBy.layer.cornerRadius = 5
-        buttonOrderBy.layer.borderWidth = 1
-        buttonOrderBy.layer.borderColor = UIColor.white.cgColor
+        sortButtonStyle()
+        
+        // Add Refresh Control to Table View
+        initiateRefreshData()
         
     }
 
@@ -142,6 +144,35 @@ class DashBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    func initiateRefreshData()-> Void {
+        let refreshControl = UIRefreshControl()
+        let title = NSLocalizedString("Refreshing weather data...", comment: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: title)
+        refreshControl.tintColor = UIColor.red
+        refreshControl.addTarget(self, action: #selector(refreshOptions(sender:)), for: .valueChanged)
+        self.WeatherTable.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshOptions(sender: UIRefreshControl) {
+        sender.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.weatherData.removeAll()
+            self.retrieveWatherData()
+            if self.weatherData.count == 0 {
+                self.showAlert(Title: noDataTitle, Desc: noDataDesc)
+            } else {
+                self.WeatherTable.reloadData()
+            }
+        })
+    }
+    
+    func sortButtonStyle(){
+        buttonOrderBy.layer.masksToBounds = true
+        buttonOrderBy.layer.cornerRadius = 5
+        buttonOrderBy.layer.borderWidth = 1
+        buttonOrderBy.layer.borderColor = UIColor.white.cgColor 
+    }
+
     
     //Core Data Methods
     func retrieveWatherData(){
